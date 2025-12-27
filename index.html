@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacBook M1 - Revolutionary Performance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 50px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4);
+            animation: zoomIn 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0) opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px) opacity: 0; }
+        }
+
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 10vw, 9rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease, shimmer 3s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 15px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 50px;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-stats {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2.5rem;
+            opacity: 0.7;
+        }
+
+        .specs-section {
+            padding: 100px 20px;
+            background: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #999;
+            margin-bottom: 60px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .spec-card {
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .spec-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .spec-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .spec-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .spec-card p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        .video-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #000 0%, #0a0a1e 100%);
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 90px rgba(102, 126, 234, 0.3);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .play-button {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .interactive-showcase {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #0a0a1e 0%, #000 100%);
+            position: relative;
+        }
+
+        .interactive-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+        }
+
+        .product-viewer {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(15, 15, 30, 0.8);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 30px 90px rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            position: relative;
+        }
+
+        .color-selector {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .color-selector-label {
+            font-size: 1.1rem;
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .color-option {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 4px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .color-option::after {
+            content: attr(title);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .color-option.active::after {
+            opacity: 1;
+        }
+
+        .color-option:hover {
+            transform: scale(1.15);
+        }
+
+        .color-option.active {
+            border-color: #fff;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .silver {
+            background: linear-gradient(135deg, #f5f5f5, #d0d0d0);
+        }
+
+        .space-gray {
+            background: linear-gradient(135deg, #6a6a6a, #404040);
+        }
+
+        .gold {
+            background: linear-gradient(135deg, #f9d77e, #d4a54f);
+        }
+
+        .macbook-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .macbook-image {
+            width: 100%;
+            max-width: 600px;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 20px 60px rgba(102, 126, 234, 0.4));
+        }
+
+        .config-section {
+            margin-top: 40px;
+        }
+
+        .config-group {
+            margin-bottom: 35px;
+        }
+
+        .config-label {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .config-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .config-btn {
+            padding: 20px 25px;
+            background: rgba(30, 30, 46, 0.8);
+            border: 2px solid #333;
+            border-radius: 15px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .config-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .config-btn:hover::before {
+            left: 100%;
+        }
+
+        .config-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .config-btn.selected {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-color: #764ba2;
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .price-display {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+        }
+
+        .price-display .label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .price-display .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+
+        .compare-section {
+            padding: 100px 20px;
+            background: #000;
+        }
+
+        .compare-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(30, 30, 46, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .compare-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 25px 30px;
+            border-bottom: 1px solid #333;
+            transition: background 0.3s ease;
+        }
+
+        .compare-row:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .compare-row:first-child {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-weight: 700;
+        }
+
+        .compare-cell {
+            text-align: center;
+        }
+
+        .compare-cell:first-child {
+            text-align: left;
+        }
+
+        .pricing-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #000 0%, #0a0a1e 100%);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+            padding: 50px 40px;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(1.05);
+            border-color: #764ba2;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.5);
+            border-color: #667eea;
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-15px) scale(1.07);
+        }
+
+        .price-tag {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 25px 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .price-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.05rem;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .pricing-card.featured .price-features li::before {
+            color: #fff;
+        }
+
+        .testimonials {
+            padding: 100px 20px;
+            background: #000;
+        }
+
+        .testimonial-slider {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial {
+            padding: 50px;
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .testimonial p {
+            font-size: 1.7rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        .author {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .dot:hover {
+            background: #555;
+        }
+
+        .dot.active {
+            background: #667eea;
+            transform: scale(1.4);
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+        }
+
+        .newsletter {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .newsletter-btn {
+            padding: 18px 40px;
+            background: #fff;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            padding: 80px 20px 40px;
+            background: #000;
+            border-top: 1px solid #222;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #999;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+            color: #666;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-link:hover {
+            background: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .product-viewer {
+                padding: 30px 20px;
+            }
+            
+            .feature-stats {
+                gap: 30px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .color-option {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .macbook-image {
+                max-width: 90%;
+            }
+            
+            .compare-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        .video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="nav" id="navbar">
+        <div class="nav-logo">MacBook M1</div>
+        <ul class="nav-links">
+            <li><a onclick="scrollToSection('specs')">Features</a></li>
+            <li><a onclick="scrollToSection('customize')">Customize</a></li>
+            <li><a onclick="scrollToSection('compare')">Compare</a></li>
+            <li><a onclick="scrollToSection('pricing')">Pricing</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <h1>MacBook M1</h1>
+            <p class="tagline">SUPERCHARGED BY APPLE SILICON</p>
+            <p class="subtitle">Experience the future of computing with unprecedented power and efficiency</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('customize')">
+                    <span>Customize Now</span>
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('specs')">
+                    <span>Explore Features</span>
+                </button>
+            </div>
+            <div class="feature-stats">
+                <div class="stat">
+                    <div class="stat-number">3.5x</div>
+                    <div class="stat-label">Faster CPU</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5x</div>
+                    <div class="stat-label">Faster GPU</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">20hr</div>
+                    <div class="stat-label">Battery Life</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToSection('specs')"></div>
+    </section>
+
+    <section class="specs-section" id="specs">
+        <div class="container">
+            <h2 class="section-title">Revolutionary Performance</h2>
+            <p class="section-subtitle">Built to handle everything from everyday tasks to professional workflows</p>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <span class="spec-icon">🧠</span>
+                    <h3>M1 Chip</h3>
+                    <p>8-core CPU delivers up to 3.5x faster performance than the previous generation. Built on 5nm process technology for incredible efficiency.</p>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-icon">🎮</span>
+                    <h3>8-Core GPU</h3>
+                    <p>Graphics performance up to 5x faster for demanding creative workflows. Handle 4K video editing and 3D rendering with ease.</p>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-icon">⚡</span>
+                    <h3>16-Core Neural Engine</h3>
+                    <p>Advanced machine learning capabilities with 11 trillion operations per second. AI-powered features work seamlessly.</p>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-icon">🔋</span>
+                    <h3>20-Hour Battery</h3>
+                    <p>Longest battery life ever in a Mac. All-day productivity without compromise. Work unplugged like never before.</p>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-icon">💾</span>
+                    <h3>Up to 16GB RAM</h3>
+                    <p>Unified memory architecture for seamless multitasking. Lightning-fast access for all your applications and data.</p>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-icon">🖥️</span>
+                    <h3>Retina Display</h3>
+                    <p>Stunning 13.3-inch screen with True Tone technology. P3 wide color gamut brings images to life with vivid accuracy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            <p class="section-subtitle">Watch how the M1 transforms productivity</p>
+            <div class="video-container">
+                <div class="video-placeholder" onclick="playVideo()">
+    <div class="play-button">▶</div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interactive-showcase" id="customize">
+        <div class="container">
+            <h2 class="section-title">Build Your Perfect MacBook</h2>
+            <p class="section-subtitle">Customize every aspect to match your needs</p>
+            <div class="product-viewer">
+                <div class="color-selector">
+                    <span class="color-selector-label">Choose Color:</span>
+                    <div class="color-option silver active" onclick="changeColor('silver')" title="Silver"></div>
+                    <div class="color-option space-gray" onclick="changeColor('space-gray')" title="Space Gray"></div>
+                    <div class="color-option gold" onclick="changeColor('gold')" title="Gold"></div>
+                </div>
+                <div class="macbook-container">
+                    <svg class="macbook-image" id="macbookSVG" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="100" y="50" width="600" height="400" rx="20" fill="#e8e8e8" id="macbookBody"/>
+                        <rect x="110" y="60" width="580" height="340" rx="15" fill="#1a1a1a"/>
+                        <rect x="120" y="70" width="560" height="320" rx="10" fill="#667eea"/>
+                        <circle cx="400" cy="230" r="30" fill="rgba(255,255,255,0.3)"/>
+                        <rect x="80" y="450" width="640" height="30" rx="5" fill="#e8e8e8" id="macbookBase"/>
+                        <rect x="340" y="460" width="120" height="15" rx="3" fill="#333"/>
+                    </svg>
+                </div>
+                <div class="config-section">
+                    <div class="config-group">
+                        <div class="config-label">Memory</div>
+                        <div class="config-options">
+                            <button class="config-btn selected" onclick="selectConfig(this, 'memory', 0)">8GB Unified Memory<br><small>Perfect for everyday tasks</small></button>
+                            <button class="config-btn" onclick="selectConfig(this, 'memory', 200)">16GB Unified Memory<br><small>Pro workflows & multitasking</small></button>
+                        </div>
+                    </div>
+                    <div class="config-group">
+                        <div class="config-label">Storage</div>
+                        <div class="config-options">
+                            <button class="config-btn selected" onclick="selectConfig(this, 'storage', 0)">256GB SSD<br><small>Essential storage</small></button>
+                            <button class="config-btn" onclick="selectConfig(this, 'storage', 200)">512GB SSD<br><small>More space for files</small></button>
+                            <button class="config-btn" onclick="selectConfig(this, 'storage', 400)">1TB SSD<br><small>Maximum capacity</small></button>
+                        </div>
+                    </div>
+                    <div class="config-group">
+                        <div class="config-label">GPU Cores</div>
+                        <div class="config-options">
+                            <button class="config-btn selected" onclick="selectConfig(this, 'gpu', 0)">7-Core GPU<br><small>Great performance</small></button>
+                            <button class="config-btn" onclick="selectConfig(this, 'gpu', 100)">8-Core GPU<br><small>Enhanced graphics</small></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-display">
+                    <div class="label">Your Configuration</div>
+                    <div class="price" id="totalPrice">$999</div>
+                    <button class="btn btn-primary" style="margin-top: 20px">
+                        <span>Add to Cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="compare-section" id="compare">
+        <div class="container">
+            <h2 class="section-title">Model Comparison</h2>
+            <p class="section-subtitle">Find the perfect MacBook for your needs</p>
+            <div class="compare-table">
+                <div class="compare-row">
+                    <div class="compare-cell">Feature</div>
+                    <div class="compare-cell">Base</div>
+                    <div class="compare-cell">Pro</div>
+                    <div class="compare-cell">Ultimate</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell">CPU Cores</div>
+                    <div class="compare-cell">8-Core</div>
+                    <div class="compare-cell">8-Core</div>
+                    <div class="compare-cell">8-Core</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell">GPU Cores</div>
+                    <div class="compare-cell">7-Core</div>
+                    <div class="compare-cell">8-Core</div>
+                    <div class="compare-cell">8-Core</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell">Memory</div>
+                    <div class="compare-cell">8GB</div>
+                    <div class="compare-cell">8GB</div>
+                    <div class="compare-cell">16GB</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell">Storage</div>
+                    <div class="compare-cell">256GB</div>
+                    <div class="compare-cell">512GB</div>
+                    <div class="compare-cell">1TB</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell">Price</div>
+                    <div class="compare-cell">$999</div>
+                    <div class="compare-cell">$1,299</div>
+                    <div class="compare-cell">$1,699</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pre-Configured Models</h2>
+            <p class="section-subtitle">Choose a ready-to-go configuration or customize your own</p>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Base Model</h3>
+                    <div class="price-tag">$999</div>
+                    <ul class="price-features">
+                        <li>M1 Chip with 8-Core CPU</li>
+                        <li>7-Core GPU</li>
+                        <li>8GB Unified Memory</li>
+                        <li>256GB SSD Storage</li>
+                        <li>13.3" Retina Display</li>
+                        <li>Magic Keyboard</li>
+                        <li>Touch ID</li>
+                        <li>Force Touch Trackpad</li>
+                    </ul>
+                    <button class="btn btn-primary">
+                        <span>Buy Now</span>
+                    </button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Pro Model</h3>
+                    <div class="price-tag">$1,299</div>
+                    <ul class="price-features">
+                        <li>M1 Chip with 8-Core CPU</li>
+                        <li>8-Core GPU</li>
+                        <li>8GB Unified Memory</li>
+                        <li>512GB SSD Storage</li>
+                        <li>13.3" Retina Display</li>
+                        <li>Magic Keyboard</li>
+                        <li>Touch ID</li>
+                        <li>Force Touch Trackpad</li>
+                    </ul>
+                    <button class="btn btn-primary">
+                        <span>Buy Now</span>
+                    </button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Ultimate</h3>
+                    <div class="price-tag">$1,699</div>
+                    <ul class="price-features">
+                        <li>M1 Chip with 8-Core CPU</li>
+                        <li>8-Core GPU</li>
+                        <li>16GB Unified Memory</li>
+                        <li>1TB SSD Storage</li>
+                        <li>13.3" Retina Display</li>
+                        <li>Magic Keyboard</li>
+                        <li>Touch ID</li>
+                        <li>Force Touch Trackpad</li>
+                    </ul>
+                    <button class="btn btn-primary">
+                        <span>Buy Now</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What People Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <p>"The M1 MacBook is a game-changer. The performance is incredible and the battery life is unmatched. It's transformed my workflow completely."</p>
+                    <div class="author">- Sarah Chen, Designer</div>
+                </div>
+                <div class="testimonial">
+                    <p>"As a developer, the M1 chip handles everything I throw at it. Compilation times are blazing fast, and I can run multiple VMs without breaking a sweat."</p>
+                    <div class="author">- Marcus Rodriguez, Software Engineer</div>
+                </div>
+                <div class="testimonial">
+                    <p>"I can edit 4K videos without a single hiccup. This machine is perfect for content creators. Silent, powerful, and the screen is gorgeous."</p>
+                    <div class="author">- Alex Kim, Video Editor</div>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active" onclick="showTestimonial(0)"></span>
+                    <span class="dot" onclick="showTestimonial(1)"></span>
+                    <span class="dot" onclick="showTestimonial(2)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Stay Updated</h2>
+            <p>Get the latest news about MacBook and exclusive offers</p>
+            <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="#">MacBook Air</a></li>
+                    <li><a href="#">MacBook Pro</a></li>
+                    <li><a href="#">iMac</a></li>
+                    <li><a href="#">Mac Mini</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-links">
+            <div class="social-link">📘</div>
+            <div class="social-link">📷</div>
+            <div class="social-link">🐦</div>
+            <div class="social-link">💼</div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MacBook Sales. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+            particle.style.animationDelay = (Math.random() * 5) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scroll
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                navbar.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Color change functionality
+        const colorMap = {
+            'silver': { body: '#e8e8e8', base: '#e8e8e8', name: 'Silver' },
+            'space-gray': { body: '#5a5a5a', base: '#5a5a5a', name: 'Space Gray' },
+            'gold': { body: '#f4c542', base: '#f4c542', name: 'Gold' }
+        };
+
+        function changeColor(color) {
+            const options = document.querySelectorAll('.color-option');
+            options.forEach(opt => opt.classList.remove('active'));
+            const selectedOption = document.querySelector(`.color-option.${color}`);
+            if (selectedOption) selectedOption.classList.add('active');
+
+            const macbookBody = document.getElementById('macbookBody');
+            const macbookBase = document.getElementById('macbookBase');
+            const svg = document.getElementById('macbookSVG');
+
+            if (macbookBody && macbookBase && svg && colorMap[color]) {
+                macbookBody.style.fill = colorMap[color].body;
+                macbookBase.style.fill = colorMap[color].base;
+                svg.style.transform = 'scale(0.95)';
+                setTimeout(function() {
+                    svg.style.transform = 'scale(1)';
+                }, 150);
+            }
+        }
+
+        // Config and pricing
+        let basePrice = 999;
+        let memoryPrice = 0;
+        let storagePrice = 0;
+        let gpuPrice = 0;
+
+        function selectConfig(btn, type, price) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('.config-btn');
+            buttons.forEach(function(b) {
+                b.classList.remove('selected');
+            });
+            btn.classList.add('selected');
+
+            if (type === 'memory') memoryPrice = price;
+            if (type === 'storage') storagePrice = price;
+            if (type === 'gpu') gpuPrice = price;
+            updatePrice();
+        }
+
+        function updatePrice() {
+            const total = basePrice + memoryPrice + storagePrice + gpuPrice;
+            const priceEl = document.getElementById('totalPrice');
+            if (priceEl) {
+                priceEl.style.transform = 'scale(1.1)';
+                setTimeout(function() {
+                    priceEl.textContent = '$' + total.toLocaleString();
+                    priceEl.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }
+
+        // Testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.dot');
+
+        function showTestimonial(index) {
+            if (testimonials.length === 0 || dots.length === 0) return;
+            
+            testimonials[currentTestimonial].classList.remove('active');
+            dots[currentTestimonial].classList.remove('active');
+            
+            currentTestimonial = index;
+            testimonials[currentTestimonial].classList.add('active');
+            dots[currentTestimonial].classList.add('active');
+        }
+
+        // Auto-rotate testimonials
+        setInterval(function() {
+            if (testimonials.length === 0) return;
+            showTestimonial((currentTestimonial + 1) % testimonials.length);
+        }, 5000);
+
+        // Newsletter form
+        function handleNewsletter(event) {
+            event.preventDefault();
+            alert('Thanks for subscribing!');
+            event.target.reset();
+        }
+    </script>
+    <script>
+function playVideo() {
+    const container = document.querySelector(".video-container");
+
+    container.innerHTML = `
+        <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/N9bVlpMtSv4?autoplay=1&rel=0"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
+    `;
+}
+
+    </script>
+
+</body>
+</html>
